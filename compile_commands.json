@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-I.",
+      "-Icap_sensor",
+      "-c",
+      "-o",
+      "cap_sensor/cap_sensor.o",
+      "cap_sensor/cap_sensor.cpp"
+    ],
+    "directory": "/home/oleksandr/Documents/lickometer-black-mesa",
+    "file": "/home/oleksandr/Documents/lickometer-black-mesa/cap_sensor/cap_sensor.cpp",
+    "output": "/home/oleksandr/Documents/lickometer-black-mesa/cap_sensor/cap_sensor.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-I.",
+      "-Icap_sensor",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/home/oleksandr/Documents/lickometer-black-mesa",
+    "file": "/home/oleksandr/Documents/lickometer-black-mesa/main.cpp",
+    "output": "/home/oleksandr/Documents/lickometer-black-mesa/main.o"
+  }
+]
