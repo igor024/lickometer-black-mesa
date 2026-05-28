@@ -1,4 +1,7 @@
-class Constants {
-    public:
-        int breakout_count = 3;
-};
+#include <stdint.h>
+
+#pragma once
+
+namespace constants {
+    extern const uint8_t breakout_count;
+}
