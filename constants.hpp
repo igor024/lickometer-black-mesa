@@ -3,5 +3,5 @@
 #pragma once
 
 namespace constants {
-    extern const uint8_t breakout_count;
+    constexpr uint8_t breakout_count = 3;
 }

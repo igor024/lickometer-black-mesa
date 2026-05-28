@@ -1,15 +1,19 @@
 #include "MPR121.h"
+#include "constants.hpp"
 
 #pragma once
 
 class mpr_manager {
     private:
-        struct breakout_pair {
+        struct breakout {
             MPR121::DeviceAddress addr;
             MPR121 dev;
         };
+        
+        breakout breakouts[constants::breakout_count];
 
-        sensor_pair breakouts[];
 
-        mpr_manager(int s_num, )
+    public:
+        mpr_manager();
+
 };
