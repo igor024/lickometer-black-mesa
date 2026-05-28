@@ -1,0 +1,14 @@
+#include "MPR121.h"
+
+#pragma once
+
+class mpr_manager {
+    private:
+        struct sensor_pair {
+            MPR121::DeviceAddress addr;
+            MPR121 dev;
+        };
+
+        std::pair<MPR121::DeviceAddress, MPR121> sensors[];
+        int sensor_number;
+};

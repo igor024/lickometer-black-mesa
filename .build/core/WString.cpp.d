@@ -1,0 +1,5 @@
+.build/core/WString.cpp.o: \
+ /home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino/WString.cpp \
+ /home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino/WString.h
+
+/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino/WString.h:
