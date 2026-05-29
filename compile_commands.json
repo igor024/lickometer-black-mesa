@@ -1,12 +1,12 @@
 [
   {
-    "directory": "/home/oleksandr/Documents/lickometer-black-mesa",
-    "file": "/home/oleksandr/Documents/lickometer-black-mesa/main.cpp",
-    "command": "/home/oleksandr/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -Os -ffunction-sections -fdata-sections -MMD -MP -flto -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics -Iarduino_compat -I/home/oleksandr/Arduino/libraries/MPR121/src -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/libraries/Wire/src -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/variants/standard -I. -Icap_sensor -c main.cpp -o .build/project/main.cpp.o"
+    "directory": "/home/ep/Documents/code/lickometer-black-mesa",
+    "file": "/home/ep/Documents/code/lickometer-black-mesa/main.cpp",
+    "command": "/home/ep/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -Os -ffunction-sections -fdata-sections -MMD -MP -flto -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics -Iarduino_compat -I/home/ep/Arduino/libraries/MPR121/src -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/libraries/Wire/src -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/variants/standard -I. -Icap_sensor -c main.cpp -o .build/project/main.cpp.o"
   },
   {
-    "directory": "/home/oleksandr/Documents/lickometer-black-mesa",
-    "file": "/home/oleksandr/Documents/lickometer-black-mesa/cap_sensor/cap_sensor.cpp",
-    "command": "/home/oleksandr/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -Os -ffunction-sections -fdata-sections -MMD -MP -flto -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics -Iarduino_compat -I/home/oleksandr/Arduino/libraries/MPR121/src -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/libraries/Wire/src -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino -I/home/oleksandr/.arduino15/packages/arduino/hardware/avr/1.8.7/variants/standard -I. -Icap_sensor -c cap_sensor/cap_sensor.cpp -o .build/project/cap_sensor/cap_sensor.cpp.o"
+    "directory": "/home/ep/Documents/code/lickometer-black-mesa",
+    "file": "/home/ep/Documents/code/lickometer-black-mesa/cap_sensor/cap_sensor.cpp",
+    "command": "/home/ep/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_UNO -DARDUINO_ARCH_AVR -Os -ffunction-sections -fdata-sections -MMD -MP -flto -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics -Iarduino_compat -I/home/ep/Arduino/libraries/MPR121/src -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/libraries/Wire/src -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/cores/arduino -I/home/ep/.arduino15/packages/arduino/hardware/avr/1.8.7/variants/standard -I. -Icap_sensor -c cap_sensor/cap_sensor.cpp -o .build/project/cap_sensor/cap_sensor.cpp.o"
   }
 ]
