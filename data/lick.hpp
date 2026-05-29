@@ -1,8 +1,10 @@
 #pragma once
 
+#include <TimeLib.h>
+
 class lick {
     public:
-        unsigned long start_time;
-        unsigned long end_time;
+        time_t start_time;
+        time_t end_time;
 };
 

@@ -2,15 +2,17 @@
 
 #include <constants.hpp>
 #include <data/lick.hpp>
+#include <sd_writer/sd_writer.hpp>
 
 class cage_data {
     private:
         
         lick bout[100]; //stores the current unwritten flush_bout
         lick current_lick; //stores the current lick
+        sd_writer* writer; //writes data to SD card
         
     public:
-        cage_data();
+        cage_data(sd_writer* writer) : writer(writer) {};
 
         /*
          * records animal starts licking
