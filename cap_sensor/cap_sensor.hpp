@@ -1,7 +1,7 @@
+#pragma once
+
 #include <stdint.h>
 #include "MPR121.h"
-
-#pragma once
 
 class cap_sensor {
     private:
