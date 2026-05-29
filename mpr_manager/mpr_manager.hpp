@@ -10,12 +10,14 @@ class mpr_manager {
 
         struct breakout {
             MPR121::DeviceAddress addr;
-            cap_sensor* sensors[constants::channel_count];
+            cap_sensor* sensors[constants::pin_count];
+
+            ~breakout();
         };
 
         breakout* breakouts[constants::breakout_count];
     public:
         mpr_manager(MPR121& mpr, MPR121::DeviceAddress addresses[]);
 
-        // add a free call
+        ~mpr_manager();
 };
