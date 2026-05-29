@@ -34,6 +34,8 @@ MPR121_SRC := $(ARDUINO_SKETCHBOOK)/libraries/MPR121/src
 # Add project libraries here. User libraries should point at their src directory.
 USER_LIB_DIRS := $(MPR121_SRC)
 PLATFORM_LIB_DIRS := $(WIRE_SRC)
+PROJECT_INCLUDE_DIRS := $(shell find . -path './.*' -prune -o -type d -print | sed 's#^\./##' | sort)
+PROJECT_INCLUDE_FLAGS := $(addprefix -I,$(PROJECT_INCLUDE_DIRS))
 
 PROJECT_SRCS := main.cpp cap_sensor/cap_sensor.cpp
 USER_LIB_SRCS := $(shell find $(USER_LIB_DIRS) -type f \( -name '*.c' -o -name '*.cpp' -o -name '*.S' \) 2>/dev/null)
@@ -59,13 +61,11 @@ LDFLAGS := -mmcu=$(MCU) -Os -Wl,--gc-sections -flto
 # Arduino include paths come before local paths so real library headers win over
 # the local stubs MPR121.h and Wire.h.
 INCLUDES := \
-	-Iarduino_compat \
 	-I$(MPR121_SRC) \
 	-I$(WIRE_SRC) \
 	-I$(CORE_DIR) \
 	-I$(VARIANT_DIR) \
-	-I. \
-	-Icap_sensor
+	$(PROJECT_INCLUDE_FLAGS)
 
 ELF := $(BUILD_DIR)/$(PROJECT).elf
 HEX := $(BUILD_DIR)/$(PROJECT).hex

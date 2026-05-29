@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include "MPR121.h"
 
+#pragma once
+
 class cap_sensor {
     private:
         uint8_t pin;
