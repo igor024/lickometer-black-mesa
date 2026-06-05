@@ -20,4 +20,8 @@ class mpr_manager {
         mpr_manager(MPR121& mpr, MPR121::DeviceAddress addresses[]);
 
         ~mpr_manager();
+
+        bool is_pin_pressed(uint8_t breakout_idx, uint8_t pin_idx);
+
+        cap_sensor* get_sensor(uint8_t breakout_idx, uint8_t pin_idx);
 };

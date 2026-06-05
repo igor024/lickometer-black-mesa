@@ -3,6 +3,5 @@
 #include <TimeLib.h>
 
 class clock {
-    public:
-
+};
 

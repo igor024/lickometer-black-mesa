@@ -1,6 +1,9 @@
+#include "cage/cage.hpp"
+#include "constants.hpp"
 #include "mpr_manager.hpp"
 
 MPR121 mpr121;
+
 MPR121::DeviceAddress sensor_boards[] = {
     MPR121::ADDRESS_5A,
     MPR121::ADDRESS_5B,
@@ -8,11 +11,15 @@ MPR121::DeviceAddress sensor_boards[] = {
 };
 
 mpr_manager* sensor_manager;
+cage* cages[constants::cage_count];
+
 
 void setup() {
     sensor_manager = new mpr_manager(mpr121, sensor_boards);
+
+    
 }
 
 void loop() {
-
+    
 }

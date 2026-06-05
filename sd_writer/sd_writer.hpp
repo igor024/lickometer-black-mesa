@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SD>
+#include <SD.h>
 #include <data/bout.hpp>
 
 class sd_writer {
@@ -11,3 +11,4 @@ class sd_writer {
         bool begin(time_t start_time);
         bool write_bout(bout b);
 };
+
