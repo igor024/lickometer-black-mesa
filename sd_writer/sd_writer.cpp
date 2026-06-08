@@ -8,11 +8,10 @@
 #include <data/bout.hpp>
 #include <data/lick.hpp>
 
-SdFat SD; // Replaces the standard SD object
+SdFat SD; 
 
 void setup() {
-    // Starts the SD card just like normal
-    if (!SD.begin(CS_PIN)) {
+    if (!SD.begin()) {
         // error handling
     }
 }
