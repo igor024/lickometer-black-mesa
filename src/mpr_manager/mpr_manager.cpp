@@ -10,6 +10,9 @@ mpr_manager::mpr_manager(
     mpr121.setWire(*constants::i2c_wire, constants::fast_mode);
 
     for (int addr = 0; addr < constants::breakout_count; ++addr) {
+        Serial.print("SETUP BEGAN FOR BREAKOUT ");
+        Serial.println(addr);
+
         breakouts[addr] = new mpr_manager::breakout{addresses[addr], {nullptr}};
 
         for (int sen = 0; sen < constants::pin_count; ++sen) {
@@ -68,6 +71,8 @@ mpr_manager::mpr_manager(
             constants::proximity_mode
         );
 
+        Serial.print("SETUP COMPLETE FOR BREAKOUT ");
+        Serial.println(addr);
     } 
 }
 

@@ -11,7 +11,7 @@ namespace constants {
     constexpr uint8_t max_lick_duration = 3; // in seconds; will reset bout if lick goes over
     constexpr uint8_t max_time_between_licks = 3; // in seconds; will reset bout if licks are spaced further apart
     constexpr uint8_t cage_count = 1;
-    constexpr uint32_t loop_delay = 100; // time between cycles
+    constexpr uint32_t loop_delay = 1000; // time between cycles
     constexpr uint32_t baud = 9600; // serial speed
 
     // MPR 121 CONFIG
