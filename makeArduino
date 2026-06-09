@@ -19,13 +19,13 @@ EOF
 
 args=()
 
-sketch_name="arduino_lickometer_black_mesa"
+sketch_name="arduino-${PWD##*/}"
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 output_dir="$script_dir/$sketch_name"
 sketch_file="$output_dir/$sketch_name.ino"
 
-if [[ ! "$sketch_name" =~ ^[A-Za-z][A-Za-z0-9_]*$ ]]; then
-  echo "error: sketch_name must start with a letter and contain only letters, numbers, and underscores" >&2
+if [[ ! "$sketch_name" =~ ^[A-Za-z][A-Za-z0-9_\-]*$ ]]; then
+  echo "error: sketch_name must start with a letter and contain only letters, dashes, numbers, and underscores" >&2
   exit 1
 fi
 
