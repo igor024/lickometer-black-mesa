@@ -16,5 +16,8 @@ class cap_sensor {
             mpr121(m)
         {};
 
+        /*
+         * returns whether this capacitive sensor is currently being touched
+         */
         bool touching();
 };

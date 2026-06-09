@@ -24,7 +24,14 @@ class cage {
             writer(writer)
         {};
 
+        /*
+         * measures the cage sensors and records any contact changes
+         */
         bool measure_cap();
+
+        /*
+         * writes the cage's remaining recorded data to storage
+         */
         void export_data();
         
 

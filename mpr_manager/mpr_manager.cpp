@@ -1,4 +1,5 @@
 #include "mpr_manager.hpp" 
+#include "logger.hpp"
 #include "cap_sensor.hpp"
 #include "constants.hpp"
 
@@ -35,6 +36,14 @@ mpr_manager::breakout::~breakout() {
 }
 
 bool mpr_manager::is_pin_pressed(uint8_t breakout_idx, uint8_t pin_idx) {
+    if (breakout_idx > constants::breakout_count - 1) {
+        WARN("breakout idx exceeds number of breakout boards");
+    }
+
+    if (pin_idx > constants::pin_count - 1) {
+        WARN("pin idx exceeds number of pins on the breakout");
+    }
+
     breakout_idx = min(breakout_idx, constants::breakout_count - 1);
     pin_idx = min(pin_idx, constants::pin_count - 1);
 
@@ -42,6 +51,14 @@ bool mpr_manager::is_pin_pressed(uint8_t breakout_idx, uint8_t pin_idx) {
 }
 
 cap_sensor* mpr_manager::get_sensor(uint8_t breakout_idx, uint8_t pin_idx) {
+    if (breakout_idx > constants::breakout_count - 1) {
+        WARN("breakout idx exceeds number of breakout boards");
+    }
+
+    if (pin_idx > constants::pin_count - 1) {
+        WARN("pin idx exceeds number of pins on the breakout");
+    }
+    
     breakout_idx = min(breakout_idx, constants::breakout_count - 1);
     pin_idx = min(pin_idx, constants::pin_count - 1);
 

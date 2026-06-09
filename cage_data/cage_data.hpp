@@ -35,4 +35,3 @@ class cage_data {
 
         void flush_bout();
 };
-
