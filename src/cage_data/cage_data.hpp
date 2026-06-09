@@ -1,8 +1,8 @@
 #pragma once
 
-#include <constants.hpp>
-#include <data/lick.hpp>
-#include <sd_writer/sd_writer.hpp>
+#include "../../constants.hpp"
+#include "../data/lick.hpp"
+#include "../sd_writer/sd_writer.hpp"
 
 class cage_data {
     private:

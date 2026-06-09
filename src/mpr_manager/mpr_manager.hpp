@@ -1,8 +1,8 @@
 #pragma once
 
 #include "MPR121.h"
-#include "cap_sensor.hpp"
-#include "constants.hpp"
+#include "../cap_sensor/cap_sensor.hpp"
+#include "../../constants.hpp"
 
 class mpr_manager {
     private:

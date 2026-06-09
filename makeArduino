@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ./makeArduino 
+
+Creates an Arduino IDE sketch copy of this project.
+
+Defaults:
+  sketch_name: arduino_lickometer_black_mesa
+  output_dir:  ./<sketch_name>
+
+Examples:
+  ./makeArduino
+EOF
+}
+
+args=()
+
+sketch_name="arduino_lickometer_black_mesa"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+output_dir="$script_dir/$sketch_name"
+sketch_file="$output_dir/$sketch_name.ino"
+
+if [[ ! "$sketch_name" =~ ^[A-Za-z][A-Za-z0-9_]*$ ]]; then
+  echo "error: sketch_name must start with a letter and contain only letters, numbers, and underscores" >&2
+  exit 1
+fi
+
+if [[ -e "$output_dir" ]]; then
+  rm -rf "$output_dir"
+fi
+
+mkdir "$output_dir"
+
+cp main.cpp "$sketch_file"
+
+for path in \
+  constants.hpp \
+  logger.hpp \
+  src
+do
+  cp -R -P "$script_dir/$path" "$output_dir/"
+done
+
+cat > "$output_dir/README_ARDUINO.txt" <<EOF
+Arduino sketch generated from:
+  $script_dir
+
+Open this file in Arduino IDE:
+  $sketch_file
+
+Project source files were copied into:
+  $output_dir
+
+Required libraries:
+  - MPR121
+  - TimeLib
+  - SdFat, unless the code is changed to use Arduino's built-in SD library only
+
+Known code fixes still needed before upload:
+  - Remove the extra global setup() in sd_writer/sd_writer.cpp.
+  - Make sd_writer.hpp and sd_writer.cpp function signatures match.
+  - Use either SD.h or SdFat.h consistently.
+  - Add Arduino.h includes where files directly use Arduino symbols like Serial, F(), or min().
+EOF
+
+echo "Created Arduino sketch:"
+echo "  $sketch_file"
+echo
+echo "Open that .ino file in Arduino IDE."
+echo "Read README_ARDUINO.txt in the sketch folder for library and code-fix notes."

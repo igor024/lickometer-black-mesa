@@ -1,8 +1,8 @@
 #pragma once
 
-#include <constants.hpp>
+#include "../../constants.hpp"
 #include <stdint.h>
-#include <data/lick.hpp>
+#include "lick.hpp"
 
 struct bout {
     lick licks[constants::max_bout_size];

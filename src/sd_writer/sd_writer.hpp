@@ -1,13 +1,13 @@
 #pragma once
 
-#include <SD.h>
-#include <data/bout.hpp>
+#include <SdFat.h>
+#include "../data/bout.hpp"
 
 class sd_writer {
     private:
         File recording;
     public:
-        sd_writer();
+        sd_writer() {};
 
         /*
          * initializes the SD card and prepares a recording for the start time

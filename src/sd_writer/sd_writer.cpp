@@ -2,20 +2,22 @@
 
 #include <SdFat.h>
 #include <TimeLib.h>  
-#include <constants.hpp>
-#include "sd_writer/sd_writer.hpp"
+#include "../../constants.hpp"
 #include "sd_writer.hpp"
-#include <data/bout.hpp>
-#include <data/lick.hpp>
+#include "../data/bout.hpp"
+#include "../data/lick.hpp"
 
 SdFat SD; 
 
+/*
 void setup() {
     if (!SD.begin()) {
         // error handling
     }
 }
+*/
 
+/*
 bool sd_writer::begin() {
     if(!SD.begin()) {
         return false;
@@ -27,6 +29,9 @@ bool sd_writer::begin() {
 
     return true;
 }
+*/
+
+/*
 
 bool sd_writer::new_recording(time_t start_tme) {
     char filename[32];
@@ -50,3 +55,4 @@ bool sd_writer::write_bout(bout) {
     }
 }
 
+*/

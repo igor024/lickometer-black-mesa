@@ -1,7 +1,7 @@
 #pragma once
 
-#include "cap_sensor.hpp"
-#include "cage_data.hpp"
+#include "../cap_sensor/cap_sensor.hpp"
+#include "../cage_data/cage_data.hpp"
 
 
 class cage {
