@@ -13,7 +13,8 @@ mpr_manager::mpr_manager(
         Serial.print("SETUP BEGAN FOR BREAKOUT ");
         Serial.println(addr);
 
-        breakouts[addr] = new mpr_manager::breakout{addresses[addr], {nullptr}};
+        breakouts[addr] =
+            new mpr_manager::breakout{addresses[addr], {nullptr}};
 
         for (int sen = 0; sen < constants::pin_count; ++sen) {
             breakouts[addr]->sensors[sen] = new cap_sensor(
