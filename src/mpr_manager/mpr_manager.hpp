@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MPR121.h"
+#include <MPR121.h>
 #include "../cap_sensor/cap_sensor.hpp"
 #include "../../constants.hpp"
 
@@ -37,4 +37,9 @@ class mpr_manager {
          * returns the sensor object for the requested breakout pin
          */
         cap_sensor* get_sensor(uint8_t breakout_idx, uint8_t pin_idx);
+
+        /*
+         * calibrates all the sensors that belong to the mpr_manager
+         */
+        void calibrate_sensors();
 };

@@ -1,3 +1,4 @@
+#include <MPR121.h>
 #include "mpr_manager.hpp" 
 #include "../../logger.hpp"
 #include "../cap_sensor/cap_sensor.hpp"
@@ -117,4 +118,12 @@ cap_sensor* mpr_manager::get_sensor(uint8_t breakout_idx, uint8_t pin_idx) {
     pin_idx = min(pin_idx, constants::pin_count - 1);
 
     return breakouts[breakout_idx]->sensors[pin_idx];
+}
+
+void mpr_manager::calibrate_sensors() {
+    for (int addr = 0; addr < constants::breakout_count; ++addr) {
+        for (int sen = 0; sen < constants::pin_count; ++sen) {
+            breakouts[addr]->sensors[sen]->calibrate();
+        }
+    }
 }
