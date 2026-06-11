@@ -6,6 +6,8 @@
 
 class mpr_manager {
     private:
+        MPR121& mpr121;
+
         struct breakout {
             MPR121::DeviceAddress addr;
             cap_sensor* sensors[constants::pin_count];
@@ -18,8 +20,6 @@ class mpr_manager {
 
         breakout* breakouts[constants::breakout_count];
     public:
-        MPR121& mpr121; // make this private after debug
-        
         mpr_manager(MPR121& mpr, MPR121::DeviceAddress addresses[]);
 
         /*

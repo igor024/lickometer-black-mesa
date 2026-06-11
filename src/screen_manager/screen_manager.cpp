@@ -1,15 +1,12 @@
 #include "screen_manager.hpp"
 #include "../../constants.hpp"
-#include "../mpr_manager/mpr_manager.hpp"
 
 screen_manager::screen_manager(
     Adafruit_FT6206& touch_sense,
-    Adafruit_ILI9341& scr,
-    mpr_manager* sensor_manager
+    Adafruit_ILI9341& scr
 ): 
     touch_sensor(touch_sense), 
     screen(scr), 
-    sensor_manager(sensor_manager),
     root_view(nullptr)
 {
     touch_sensor.begin(constants::screen_sensitivity);
@@ -145,11 +142,6 @@ void screen_manager::setup_ui() {
 
 void screen_manager::process_touch() {
     if (touch_sensor.touched()) {
-        Serial.println("Calibrating");
-
-        //sensor_manager->mpr121.stopAllChannels();
-        sensor_manager->calibrate_sensors();
-
         TS_Point p = touch_sensor.getPoint();
         
         // Map touch coordinates to screen coordinates if rotation is used

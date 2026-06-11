@@ -12,7 +12,6 @@ class screen_manager {
     private:
         Adafruit_FT6206& touch_sensor;
         Adafruit_ILI9341& screen; 
-        mpr_manager* sensor_manager;
         ui::View* root_view;
 
         // UI Elements that might need updating
@@ -26,7 +25,7 @@ class screen_manager {
         void setup_ui();
 
     public:
-        screen_manager(Adafruit_FT6206& touch_sense, Adafruit_ILI9341& scr, mpr_manager* sensor_manager);
+        screen_manager(Adafruit_FT6206& touch_sense, Adafruit_ILI9341& scr);
         ~screen_manager();
 
         void process_touch();
