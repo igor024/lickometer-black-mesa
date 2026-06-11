@@ -17,6 +17,8 @@ void cap_sensor::calibrate() {
     touch_threshold = constants::default_touch_threshold;
     release_threshold = constants::default_release_threshold;
 
+    set_thresholds();
+
     delay(10);
 
     if (!touching()) {

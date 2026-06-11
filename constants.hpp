@@ -29,7 +29,7 @@ namespace constants {
     constexpr uint8_t release_debounce = 1;
 
     constexpr MPR121::BaselineTracking baseline_tracking =
-        MPR121::BASELINE_TRACKING_INIT_5BIT;
+        MPR121::BASELINE_TRACKING_INIT_10BIT;
     constexpr uint8_t charge_discharge_current = 63;
     constexpr MPR121::ChargeDischargeTime charge_discharge_time =
         MPR121::CHARGE_DISCHARGE_TIME_HALF_US;

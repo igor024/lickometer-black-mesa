@@ -147,6 +147,7 @@ void screen_manager::process_touch() {
     if (touch_sensor.touched()) {
         Serial.println("Calibrating");
 
+        //sensor_manager->mpr121.stopAllChannels();
         sensor_manager->calibrate_sensors();
 
         TS_Point p = touch_sensor.getPoint();

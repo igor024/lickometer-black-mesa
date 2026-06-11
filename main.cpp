@@ -44,7 +44,20 @@ void setup() {
 }
 
 void loop() {
+    // mpr121.startAllChannels();
+
+    // delay(100);
+
     scr_manager->process_touch();
+
     WARN(sensor_manager->is_pin_pressed(0, 0));
+
+    WARN(mpr121.getDeviceChannelBaselineData(sensor_boards[0], 0));
+    WARN(mpr121.getDeviceChannelFilteredData(sensor_boards[0], 0));
+
+    // mpr121.stopAllChannels();
+
     delay(constants::loop_delay);
+
+    Serial.println("stopped");
 }
