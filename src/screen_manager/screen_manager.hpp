@@ -12,7 +12,13 @@ class screen_manager {
     private:
         Adafruit_FT6206& touch_sensor;
         Adafruit_ILI9341& screen; 
-        ui::View* root_view;
+        
+        ui::View* active_view;
+
+        ui::View* start_view;
+        ui::View* main_menu_view;
+        ui::View* settings_view;
+        ui::View* experiment_view;
 
         // UI Elements that might need updating
         ui::TextView* exp_name_view;
@@ -22,6 +28,9 @@ class screen_manager {
         ui::TextView* b1_licks_view;
         ui::Keyboard* kb_view;
 
+        uint32_t start_screen_timer;
+        bool in_start_screen;
+
         void setup_ui();
 
     public:
@@ -30,6 +39,8 @@ class screen_manager {
 
         void process_touch();
         void draw();
+        void tick(); // To handle timers like start screen timeout
+        void switch_to_view(ui::View* new_view);
 
         // Methods to update data
         void update_experiment_name(String name);

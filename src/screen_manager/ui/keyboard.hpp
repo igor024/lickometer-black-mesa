@@ -8,6 +8,8 @@
 
 namespace ui {
 
+// TODO: Fix formatting
+
 class Keyboard : public View {
 private:
     String input_text;
@@ -124,12 +126,18 @@ public:
         // Row 2
         current_x = x + 15;
         start_y += key_h + spacing;
+
         for (int i = 0; i < 9; ++i) {
             key_contexts[key_ctx_count] = {this, row2[i]};
+
             add_child(new Button(
                 current_x, start_y, key_w, key_h, String(row2[i]), 
-                handle_key_press, &key_contexts[key_ctx_count]
+                handle_key_press, &key_contexts[key_ctx_count],
+                constants::color_primary,
+                constants::color_text,
+                1
             ));
+
             current_x += key_w + spacing;
             key_ctx_count++;
         }
@@ -137,11 +145,20 @@ public:
         // Row 3
         current_x = x + 30;
         start_y += key_h + spacing;
+
         for (int i = 0; i < 7; ++i) {
             key_contexts[key_ctx_count] = {this, row3[i]};
             add_child(new Button(
-                current_x, start_y, key_w, key_h, String(row3[i]), 
-                handle_key_press, &key_contexts[key_ctx_count]
+                current_x,
+                start_y,
+                key_w,
+                key_h,
+                String(row3[i]),
+                handle_key_press,
+                &key_contexts[key_ctx_count],
+                constants::color_primary,
+                constants::color_text,
+                1
             ));
             current_x += key_w + spacing;
             key_ctx_count++;
@@ -151,18 +168,75 @@ public:
         start_y += key_h + spacing;
         current_x = x + 5;
         
-        add_child(new Button(current_x, start_y, 60, key_h, "Cancel", handle_cancel, this));
+        add_child(
+            new Button(
+                current_x,
+                start_y,
+                60,
+                key_h,
+                "Cancel",
+                handle_cancel,
+                this,
+                constants::color_primary,
+                constants::color_text,
+                1
+            )
+        );
+
         current_x += 60 + spacing;
         
         key_contexts[key_ctx_count] = {this, ' '};
-        add_child(new Button(current_x, start_y, 100, key_h, "Space", handle_key_press, &key_contexts[key_ctx_count]));
+
+        add_child(
+            new Button(
+                current_x,
+                start_y,
+                100,
+                key_h,
+                "Space",
+                handle_key_press,
+                &key_contexts[key_ctx_count],
+                constants::color_primary,
+                constants::color_text,
+                1
+            )
+        );
+
         key_ctx_count++;
+
         current_x += 100 + spacing;
         
-        add_child(new Button(current_x, start_y, 40, key_h, "Del", handle_backspace, this));
+        add_child(
+            new Button(
+                current_x,
+                start_y,
+                40,
+                key_h,
+                "Del",
+                handle_backspace,
+                this,
+                constants::color_primary,
+                constants::color_text,
+                1
+            )
+        );
+
         current_x += 40 + spacing;
         
-        add_child(new Button(current_x, start_y, 80, key_h, "Submit", handle_submit, this));
+        add_child(
+            new Button(
+                current_x,
+                start_y,
+                80,
+                key_h,
+                "Submit",
+                handle_submit,
+                this,
+                constants::color_primary,
+                constants::color_text,
+                1
+            )
+        );
     }
 
     void show(String current_text) {

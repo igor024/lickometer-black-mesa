@@ -13,6 +13,7 @@ private:
     uint16_t text_color;
     void (*on_click_callback)(void*);
     void* callback_context;
+    uint8_t text_size;
 
 public:
     Button(
@@ -24,14 +25,16 @@ public:
         void (*callback)(void*),
         void* context,
         uint16_t bg_color = constants::color_primary,
-        uint16_t text_color = constants::color_text
+        uint16_t text_color = constants::color_text,
+        uint8_t text_size = 2
     ): 
         View(x, y, w, h),
         label(label),
         bg_color(bg_color),
         text_color(text_color),
         on_click_callback(callback),
-        callback_context(context)
+        callback_context(context),
+        text_size(text_size)
     {}
 
     void draw(Adafruit_ILI9341& screen) override {
@@ -39,13 +42,15 @@ public:
         screen.fillRoundRect(x, y, width, height, 4, bg_color);
         screen.drawRoundRect(x, y, width, height, 4, constants::color_border); 
         
-        // Simple text centering approximation
-        int16_t text_x = x + (width - (label.length() * 6)) / 2; // Assuming text size 1 (6x8 pixels)
-        int16_t text_y = y + (height - 8) / 2;
+        int16_t offset_x = (width - (label.length() * 6 * text_size)) / 2;
+        int16_t offset_y = (height - 8 * text_size) / 2; 
+
+        int16_t text_x = x + offset_x;
+        int16_t text_y = y + offset_y;
 
         screen.setCursor(text_x, text_y);
         screen.setTextColor(text_color);
-        screen.setTextSize(1);
+        screen.setTextSize(text_size);
         screen.print(label);
 
         View::draw(screen); // Draw children if any

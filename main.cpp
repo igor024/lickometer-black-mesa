@@ -29,7 +29,7 @@ void setup() {
 
     sensor_manager = new mpr_manager(mpr121, sensor_boards);
 
-    scr_manager = new screen_manager(screen_cap_touch, screen, sensor_manager);
+    scr_manager = new screen_manager(screen_cap_touch, screen);
 
     cap_sensor *s0 = sensor_manager->get_sensor(0, 0);
     cap_sensor *s1 = sensor_manager->get_sensor(0, 1);
@@ -49,15 +49,14 @@ void loop() {
     // delay(100);
 
     scr_manager->process_touch();
+    scr_manager->tick();
 
+    /*
     WARN(sensor_manager->is_pin_pressed(0, 0));
 
     WARN(mpr121.getDeviceChannelBaselineData(sensor_boards[0], 0));
     WARN(mpr121.getDeviceChannelFilteredData(sensor_boards[0], 0));
-
-    // mpr121.stopAllChannels();
+    */
 
     delay(constants::loop_delay);
-
-    Serial.println("stopped");
 }
