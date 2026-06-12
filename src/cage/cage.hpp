@@ -2,7 +2,7 @@
 
 #include "../cap_sensor/cap_sensor.hpp"
 #include "../cage_data/cage_data.hpp"
-
+#include "./sd_writer.hpp"
 
 class cage {
     private:

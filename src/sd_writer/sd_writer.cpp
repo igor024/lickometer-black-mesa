@@ -103,7 +103,11 @@ bool sd_writer::write_bout(bout& b) {
 
     for(size_t i = 0; i < b.count; ++i) {
         recording.print(b.licks[i].start_time); 
-        recording.print(F(", ")); //F() is used to store string literal in flash memory rather than sram
+        recording.print(F(", ")); 
+        recording.print(b.licks[i].end_time); 
+        if(i < b.count - 1) {
+            recording.print(F(", ")); 
+        }
     }
 
     recording.println();
