@@ -5,7 +5,8 @@
 
 class sd_writer {
 private:
-    File recording;
+    SdExFat sd; 
+    ExFile recording;
 
 public:
     sd_writer() {};
@@ -13,12 +14,12 @@ public:
     /*
      * creates a directory for writing data
     */
-    bool setup();
+    void setup();
 
     /*
      * initializes the SD card and prepares a recording for the start time
      */
-    bool new_recording(time_t start_time);
+    bool new_recording(timelib_t start_time);
 
     /*
      * writes each lick in a bout to the current recording file
