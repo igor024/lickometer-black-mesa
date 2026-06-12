@@ -1,33 +1,56 @@
-#pragma once
-
-
 #include <SdFat.h>
 #include <TimeLib.h>  
-#include <cstdio>
 #include "../../constants.hpp"
 #include "./sd_writer.hpp"
 #include "../data/bout.hpp"
 #include "../data/lick.hpp"
-#include "cmake/arduino_stubs/Arduino.h"
+#include "pins_arduino.h"
 
-#define sd_FAT_TYPE 2
+#define SD_FAT_TYPE 2
 // Store error strings in flash to save RAM.
-#define error(s) sd.errorHalt(&Serial, F(s))
 
-void sd_writer::setup() {
-    if(!sd.begin())
-        error("sd_writer::setup failed to initialize");
+bool sd_writer::setup() {
+    int attempts = 0;
+    bool mounted = false;
 
-    if(!sd.exists(constants::data_dir_path)) {
-        if(!sd.chdir()) 
-            error("sd_writer::setup failed to enter root directory");
-        
-        if(!sd.mkdir(constants::data_dir_path)) 
-            error("sd_writer::setup failed to create data directory");
+    // Try to mount the SD card up to 5 times
+    while (attempts < constants::SD_MOUNT_RETRIES && !mounted) {
+        if (sd.begin(constants::CHIP_SELECT_PIN)) {
+            mounted = true;
+        } else {
+            Serial.println(F("sd mount failed. retrying..."));
+            attempts++;
+
+            digitalWrite(LED_BUILTIN, HIGH);
+            delay(500);
+            digitalWrite(LED_BUILTIN, LOW);
+            delay(500);
+        }
     }
 
-    if(!sd.chdir(constants::data_dir_path))
-        error("sd_writer::setup failed to enter data directory");
+    if (!mounted) {
+        Serial.println(F("sd_writer::setup failed to initialize"));
+        return false; 
+    }
+
+    if(!sd.exists(constants::data_dir_path)) {
+        if(!sd.chdir()) {
+            Serial.println(F("sd_writer::setup failed to enter root directory"));
+            return false;
+        }
+        
+        if(!sd.mkdir(constants::data_dir_path)) {
+            Serial.println(F("sd_writer::setup failed to create data directory"));
+            return false;
+        }
+    }
+
+    if(!sd.chdir(constants::data_dir_path)) {
+        Serial.println(F("sd_writer::setup failed to enter data directory"));
+        return false;
+    }
+    
+    return true;
 }
 
 bool sd_writer::new_recording(timelib_t start_time) {
@@ -60,10 +83,14 @@ bool sd_writer::new_recording(timelib_t start_time) {
         dup_count++;
     }
 
+    if (recording.isOpen()) {
+        recording.close();
+    }
+
     return recording.open(filename, FILE_WRITE);
 }
 
-bool sd_writer::write_bout(bout b) {
+bool sd_writer::write_bout(bout& b) {
     if(!recording.isOpen()) {
         Serial.println("failed to write: file is not open");
         return false;

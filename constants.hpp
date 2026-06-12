@@ -14,6 +14,9 @@ namespace constants {
     constexpr uint8_t cage_count = 1;
     constexpr uint32_t loop_delay = 13; // time between cycles
     constexpr uint32_t baud = 9600; // serial speed
+    // SD CONFIG
+    constexpr uint8_t SD_MOUNT_RETRIES = 5;
+    constexpr uint8_t CHIP_SELECT_PIN = 0;
 
     // MPR 121 CONFIG
     

@@ -14,7 +14,7 @@ public:
     /*
      * creates a directory for writing data
     */
-    void setup();
+    bool setup();
 
     /*
      * initializes the SD card and prepares a recording for the start time
@@ -24,5 +24,5 @@ public:
     /*
      * writes each lick in a bout to the current recording file
      */
-    bool write_bout(bout b);
+    bool write_bout(bout& b);
 };
