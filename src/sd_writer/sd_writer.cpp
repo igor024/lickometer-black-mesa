@@ -4,10 +4,15 @@
 #include "./sd_writer.hpp"
 #include "../data/bout.hpp"
 #include "../data/lick.hpp"
-#include "pins_arduino.h"
+#include "../logger.hpp"
 
 #define SD_FAT_TYPE 2
 // Store error strings in flash to save RAM.
+
+sd_writer::sd_writer() {
+    bouts_written = 0;
+}
+
 
 bool sd_writer::setup() {
     int attempts = 0;
@@ -18,7 +23,7 @@ bool sd_writer::setup() {
         if (sd.begin(constants::CHIP_SELECT_PIN)) {
             mounted = true;
         } else {
-            Serial.println(F("sd mount failed. retrying..."));
+            WARN(F("sd mount failed. retrying..."));
             attempts++;
 
             digitalWrite(LED_BUILTIN, HIGH);
@@ -29,24 +34,24 @@ bool sd_writer::setup() {
     }
 
     if (!mounted) {
-        Serial.println(F("sd_writer::setup failed to initialize"));
+        WARN(F("sd_writer::setup failed to initialize"));
         return false; 
     }
 
     if(!sd.exists(constants::data_dir_path)) {
         if(!sd.chdir()) {
-            Serial.println(F("sd_writer::setup failed to enter root directory"));
+            WARN(F("sd_writer::setup failed to enter root directory"));
             return false;
         }
         
         if(!sd.mkdir(constants::data_dir_path)) {
-            Serial.println(F("sd_writer::setup failed to create data directory"));
+            WARN(F("sd_writer::setup failed to create data directory"));
             return false;
         }
     }
 
     if(!sd.chdir(constants::data_dir_path)) {
-        Serial.println(F("sd_writer::setup failed to enter data directory"));
+        WARN(F("sd_writer::setup failed to enter data directory"));
         return false;
     }
     
@@ -92,7 +97,7 @@ bool sd_writer::new_recording(timelib_t start_time) {
 
 bool sd_writer::write_bout(bout& b) {
     if(!recording.isOpen()) {
-        Serial.println("failed to write: file is not open");
+        WARN(F("failed to write: file is not open"));
         return false;
     }
 
@@ -104,10 +109,29 @@ bool sd_writer::write_bout(bout& b) {
     recording.println();
 
     if (recording.getWriteError()) {
-        Serial.println(F("failed to write bout"));
+        WARN(F("failed to write bout"));
         return false;
+    }
+
+    bouts_written++;
+
+    if(bouts_written >= constants::BOUTS_TO_SYNC) {
+        recording.sync();
+        bouts_written = 0;
     }
 
     return true;
 }
+
+bool sd_writer::end_recording() {
+    if(!recording.isOpen()) {
+        WARN(F("failed to end recording: file is not open"));
+        return false;
+    }
+
+    recording.sync();
+
+    return recording.close();
+}
+
 
